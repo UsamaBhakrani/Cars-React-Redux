@@ -26,7 +26,7 @@ const CarList = () => {
   ));
   return (
     <div className="car-list">
-      <hr /> {renderedCars} <hr />
+       {renderedCars} <hr />
     </div>
   );
 };

@@ -39,7 +39,7 @@ const CarForm = () => {
             <label className="label">Name</label>
             <input
               type="text"
-              className="input is-expanded"
+              className="input is-expended"
               value={name}
               onChange={handleNameChange}
             />
@@ -48,14 +48,14 @@ const CarForm = () => {
             <label className="label">Cost</label>
             <input
               type="number"
-              className="input is-expanded"
+              className="input is-expended"
               onChange={handleCostChange}
               value={cost || ""}
             />
           </div>
         </div>
         <div className="field">
-          <button className="is-link">Submit</button>
+          <button className="button is-link">Submit</button>
         </div>
       </form>
     </div>
