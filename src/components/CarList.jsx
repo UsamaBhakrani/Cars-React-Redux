@@ -1,9 +1,21 @@
-import React from 'react'
+import { useSelector } from "react-redux";
 
 const CarList = () => {
-  return (
-    <div>CarList</div>
-  )
-}
+  const cars = useSelector((state) => {
+    return state.cars.data;
+  });
+  console.log(cars);
 
-export default CarList
+  return (
+    <div>
+      {cars.map((car) => (
+        <li key={car.id}>
+          {car.name}
+          {car.cost}
+        </li>
+      ))}
+    </div>
+  );
+};
+
+export default CarList;
