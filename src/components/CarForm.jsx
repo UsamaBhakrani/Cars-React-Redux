@@ -1,15 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeName } from "../store";
+import { changeName, changeCost } from "../store";
 
 const CarForm = () => {
   const dispatch = useDispatch();
 
-  const name = useSelector((state) => {
-    return state.form.name;
+  const { name, cost } = useSelector((state) => {
+    return {
+      name: state.form.name,
+      cost: state.form.cost,
+    };
   });
 
   const handleNameChange = (e) => {
     dispatch(changeName(e.target.value));
+  };
+
+  const handleCostChange = (e) => {
+    const carCost = parseInt(e.target.value) || 0;
+    dispatch(changeCost(carCost));
   };
 
   return (
@@ -24,6 +32,15 @@ const CarForm = () => {
               className="input is-expanded"
               value={name}
               onChange={handleNameChange}
+            />
+          </div>
+          <div className="field">
+            <label className="label">Cost</label>
+            <input
+              type="number"
+              className="input is-expanded"
+              onChange={handleCostChange}
+              value={cost || ""}
             />
           </div>
         </div>
