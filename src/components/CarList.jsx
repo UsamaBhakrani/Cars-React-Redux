@@ -4,16 +4,22 @@ const CarList = () => {
   const cars = useSelector((state) => {
     return state.cars.data;
   });
-  console.log(cars);
 
+  const handleCarDelete = () => {};
+
+  const renderedCars = cars.map((car) => (
+    <div key={car.id} className="panel">
+      <p>
+        {car.name} - ${car.cost}
+      </p>
+      <button className="button is-danger" onClick={() => handleCarDelete(car)}>
+        Delete
+      </button>
+    </div>
+  ));
   return (
-    <div>
-      {cars.map((car) => (
-        <li key={car.id}>
-          {car.name}
-          {car.cost}
-        </li>
-      ))}
+    <div className="car-list">
+      {renderedCars} <hr />
     </div>
   );
 };
