@@ -4,14 +4,14 @@ import { removeCar } from "../store";
 const CarList = () => {
   const dispatch = useDispatch();
 
-  const cars = useSelector((state) => {
-    return state.cars.data;
+  const cars = useSelector(({ cars: { data, searchTerm } }) => {
+    return data.filter((car) =>
+      car.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   });
 
   const handleCarDelete = (car) => {
-    dispatch(
-      removeCar(car.id)
-    );
+    dispatch(removeCar(car.id));
   };
 
   const renderedCars = cars.map((car) => (
@@ -26,7 +26,7 @@ const CarList = () => {
   ));
   return (
     <div className="car-list">
-       {renderedCars} <hr />
+      <hr /> {renderedCars} <hr />
     </div>
   );
 };
