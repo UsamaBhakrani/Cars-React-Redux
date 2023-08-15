@@ -1,9 +1,17 @@
-import React from 'react'
+import { useSelector } from "react-redux";
 
 const CarValue = () => {
-  return (
-    <div>CarValue</div>
-  )
-}
+  const totalCost = useSelector(({ cars: { data, searchTerm } }) => {
+    const filteredCars = data
+      .filter((car) => {
+        return car.name.toLowerCase().includes(searchTerm.toLowerCase());
+      })
+      .reduce((acc, car) => acc + car.cost, 0);
 
-export default CarValue
+    return filteredCars;
+  });
+
+  return <div className="car-value">Total Cost: ${totalCost}</div>;
+};
+
+export default CarValue;
